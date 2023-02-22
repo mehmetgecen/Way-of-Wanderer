@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;
-    void Update()
+    void LateUpdate()
     {
         transform.position = target.transform.position;
     }
