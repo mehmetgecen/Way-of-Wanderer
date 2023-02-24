@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using RPG.Combat;
 using RPG.Core;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,7 +7,7 @@ using UnityEngine.UIElements;
 
 namespace RPG.Movement
 {
-    public class Mover : MonoBehaviour
+    public class Mover : MonoBehaviour,IAction
     {
         [SerializeField] private Transform targetTransform;
         private NavMeshAgent _playerNavMesh;
@@ -24,14 +23,17 @@ namespace RPG.Movement
         {
             UpdateAnimator();
         }
-
         
         // This Method Interrupts Combat and Starts Movement
         // Special for Combat -> Movement Transition.
+        
+        // For Cancelling Attack Operation,
+        // There will be no need to reach Fighter script after using IAction Interface. Line 36. (Dependency Inversion)
+        // RPG.Combat namespace will not be necessary.
         public void StartMoveAction(Vector3 destination)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            GetComponent<Fighter>().Cancel();
+            //GetComponent<Fighter>().Cancel(); (inefficient line after dependency inversion)
             MoveTo(destination);
         }
 
@@ -43,11 +45,11 @@ namespace RPG.Movement
             _playerNavMesh.isStopped = false;
         }
 
-        public void Stop()
+        public void Cancel()
         {
             _playerNavMesh.isStopped = true;
         }
-
+        
         // Animation Velocity Equalized to NavMesh Velocity
         // InverseTransformDirection turns Worldspace (Global) Velocity to Local Velocity relative to NavMesh Agent.
         
@@ -61,5 +63,7 @@ namespace RPG.Movement
 
 
         }
+
+        
     }
 }

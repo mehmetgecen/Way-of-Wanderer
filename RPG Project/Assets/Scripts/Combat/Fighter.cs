@@ -7,7 +7,7 @@ using RPG.Core;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour,IAction
     {
         [SerializeField] private float weaponRange = 2f;
         private Transform _target;
@@ -25,9 +25,15 @@ namespace RPG.Combat
                 }
                 else
                 {
-                    GetComponent<Mover>().Stop();
+                    GetComponent<Mover>().Cancel();
+                    AttackBehaviour();
                 }
             }
+        }
+
+        private void AttackBehaviour()
+        {
+            GetComponent<Animator>().SetTrigger("Attack");
         }
 
         private bool IsInRange()
@@ -44,6 +50,13 @@ namespace RPG.Combat
         public void Cancel()
         {
             _target = null;
+            GetComponent<Animator>().ResetTrigger("Attack");
+        }
+
+        // Animation Event called by Animator.
+        private void Hit()
+        {
+            
         }
 
     }

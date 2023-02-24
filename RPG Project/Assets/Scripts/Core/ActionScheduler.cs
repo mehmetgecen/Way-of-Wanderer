@@ -7,8 +7,8 @@ namespace RPG.Core
     // Action Scheduler is the decider mechanism inorder to prevent dependency between Combat and Movement scripts.
     public class ActionScheduler : MonoBehaviour
     {
-        MonoBehaviour currentAction;
-        public void StartAction(MonoBehaviour action)
+        IAction currentAction;
+        public void StartAction(IAction action)
         {
             // There will be no cancel if action is not changed or null.
             
@@ -16,7 +16,7 @@ namespace RPG.Core
            
             if (currentAction != null)
             {
-                print("Cancelling Action " + currentAction); 
+                currentAction.Cancel(); 
             }
             currentAction = action;
         }
