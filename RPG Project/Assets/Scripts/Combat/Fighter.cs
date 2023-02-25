@@ -43,6 +43,7 @@ namespace RPG.Combat
             {
                 GetComponent<Animator>().SetTrigger("Attack");
                 _timeSinceLastAttack = 0;
+                Hit();
             }
             
 
