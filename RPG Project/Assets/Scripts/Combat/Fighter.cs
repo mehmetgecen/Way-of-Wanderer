@@ -23,7 +23,7 @@ namespace RPG.Combat
             
             if (_target == null) return;
             
-            if (_target!=null)
+            if (_target!=null && !_target.GetComponent<Health>().isDead)
             {
                 if (!IsInRange())
                 {
@@ -41,12 +41,11 @@ namespace RPG.Combat
         {
             if (_timeSinceLastAttack >= attackCooldown)
             {
+                transform.LookAt(_target);
                 GetComponent<Animator>().SetTrigger("Attack");
                 _timeSinceLastAttack = 0;
                 Hit();
             }
-            
-
         }
         
         // Important !
@@ -55,8 +54,11 @@ namespace RPG.Combat
         // If a normal method were implemented,damage will applied to target instantly.
         private void Hit()
         {
+
+            // tHis section will be edited soon.
             Health healthComponent = _target.GetComponent<Health>();
             healthComponent.TakeDamage(weaponDamage);
+            
         }
 
         private bool IsInRange()
