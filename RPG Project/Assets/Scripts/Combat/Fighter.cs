@@ -56,16 +56,26 @@ namespace RPG.Combat
             GetComponent<Animator>().SetTrigger("Attack");
         }
 
-        public bool CanAttack(CombatTarget combatTarget)
+        // Attack function must be generic in order to use by AI.
+        // Player has no combatTarget component.
+        // Our attacks are triggering by mouse click input.
+        // AI cant click so we need to update our generic attack behaviout.
+        // CombatTarget types converted to GameObject.
+        public bool CanAttack(GameObject combatTarget)
         {
             if (combatTarget == null)
             {
                 return false;
             }
-
             Health combatTargetHealth = combatTarget.GetComponent<Health>();
-
+            
             return combatTargetHealth != null && !combatTargetHealth.IsDead();
+        }
+        
+        public void Attack(GameObject combatTarget)
+        {
+            _target = combatTarget.GetComponent<Health>();
+            GetComponent<ActionScheduler>().StartAction(this);
         }
         
         // Important !
@@ -85,11 +95,6 @@ namespace RPG.Combat
             return Vector3.Distance(_target.transform.position, transform.position) < weaponRange;
         }
 
-        public void Attack(CombatTarget combatTarget)
-        {
-            _target = combatTarget.GetComponent<Health>();
-            GetComponent<ActionScheduler>().StartAction(this);
-        }
         
         public void Cancel()
         {
