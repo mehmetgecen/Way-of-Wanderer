@@ -13,7 +13,7 @@ namespace RPG.Combat
         [SerializeField] private float weaponDamage = 5f;
         [SerializeField] private float attackCooldown = 1f;
         
-        private Transform _target;
+        Health _target;
         private float _distance;
         private float _timeSinceLastAttack;
 
@@ -22,12 +22,13 @@ namespace RPG.Combat
             _timeSinceLastAttack += Time.deltaTime;
             
             if (_target == null) return;
+            if (_target.IsDead()) return;
             
-            if (_target!=null && !_target.GetComponent<Health>().isDead)
+            if (_target!=null)
             {
                 if (!IsInRange())
                 {
-                    GetComponent<Mover>().MoveTo(_target.position); 
+                    GetComponent<Mover>().MoveTo(_target.transform.position); 
                 }
                 else
                 {
@@ -39,13 +40,32 @@ namespace RPG.Combat
 
         private void AttackBehaviour()
         {
+            transform.LookAt(_target.transform);
+            
             if (_timeSinceLastAttack >= attackCooldown)
             {
-                transform.LookAt(_target);
-                GetComponent<Animator>().SetTrigger("Attack");
+                TriggerAttackAnimations();
                 _timeSinceLastAttack = 0;
                 Hit();
             }
+        }
+
+        private void TriggerAttackAnimations()
+        {
+            GetComponent<Animator>().ResetTrigger("CancelAttack");
+            GetComponent<Animator>().SetTrigger("Attack");
+        }
+
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            if (combatTarget == null)
+            {
+                return false;
+            }
+
+            Health combatTargetHealth = combatTarget.GetComponent<Health>();
+
+            return combatTargetHealth != null && !combatTargetHealth.IsDead();
         }
         
         // Important !
@@ -54,32 +74,34 @@ namespace RPG.Combat
         // If a normal method were implemented,damage will applied to target instantly.
         private void Hit()
         {
-
-            // tHis section will be edited soon.
-            Health healthComponent = _target.GetComponent<Health>();
-            healthComponent.TakeDamage(weaponDamage);
+            if (_target == null) return;
+            
+            _target.TakeDamage(weaponDamage);
             
         }
 
         private bool IsInRange()
         {
-            return Vector3.Distance(_target.position, transform.position) < weaponRange;
+            return Vector3.Distance(_target.transform.position, transform.position) < weaponRange;
         }
 
         public void Attack(CombatTarget combatTarget)
         {
-            _target = combatTarget.transform;
+            _target = combatTarget.GetComponent<Health>();
             GetComponent<ActionScheduler>().StartAction(this);
         }
         
         public void Cancel()
         {
+            StopAttackAnimatons();
             _target = null;
-            GetComponent<Animator>().ResetTrigger("Attack");
         }
-        
-        
 
+        private void StopAttackAnimatons()
+        {
+            GetComponent<Animator>().ResetTrigger("Attack");
+            GetComponent<Animator>().SetTrigger("CancelAttack");
+        }
     }
 }
 

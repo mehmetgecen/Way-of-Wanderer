@@ -6,8 +6,9 @@ namespace RPG.Combat
 {
     public class Health : MonoBehaviour
     {
-        [SerializeField] float health = 40f;
-        public bool isDead = false;
+        [SerializeField] float health = 20f;
+        
+        bool _isDead = false;
 
         public void TakeDamage(float damage)
         {
@@ -22,10 +23,17 @@ namespace RPG.Combat
 
         private void Die()
         {
-            if (isDead) return;
-            
+            if (_isDead) return;
+             
+            _isDead = true;
             GetComponent<Animator>().SetTrigger("Die");
-            isDead = true;
+            //GetComponent<CapsuleCollider>().enabled = false;
+
+        }
+
+        public bool IsDead()
+        {
+            return _isDead;
         }
     }  
 }
