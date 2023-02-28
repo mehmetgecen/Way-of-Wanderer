@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using RPG.Combat;
+using RPG.Core;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,21 +16,20 @@ namespace RPG.Control
         
         private GameObject player; 
         private Fighter fighter;
+        private Health _health;
         
         private void Start()
         {
-            GameObject player = GameObject.FindWithTag("Player");
+            player = GameObject.FindWithTag("Player");
             fighter = GetComponent<Fighter>();
+            _health = GetComponent<Health>();
         }
 
         private void Update()
         {
-            if (gameObject.GetComponent<Health>().IsDead() && player.GetComponent<Health>().IsDead())
-            {
-                return;
-            }
+            if(_health.IsDead()) return;
             
-            if (IsInAttackRange(player) && fighter.CanAttack(player))
+            if (IsInAttackRange() && fighter.CanAttack(player))
             {
                 fighter.Attack(player);
             }
@@ -41,10 +41,23 @@ namespace RPG.Control
             
         }
 
-        private bool IsInAttackRange(GameObject targetPlayer)
+        private bool IsInAttackRange()
         {
-            var distanceToPlayer = Vector3.Distance(gameObject.transform.position, targetPlayer.transform.position);
+            var distanceToPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
             return distanceToPlayer < chaseDistance;
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.blue;
+            
+            Gizmos.DrawWireSphere(transform.position,chaseDistance);
+
+            if (player != null)
+            {
+                Gizmos.DrawLine(transform.position,player.transform.position);  
+            }
+            
         }
     }
 }

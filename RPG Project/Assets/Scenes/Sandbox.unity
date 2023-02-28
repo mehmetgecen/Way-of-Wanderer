@@ -2320,9 +2320,13 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1404130102170956430, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2835713964519173546, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
       propertyPath: attackCooldown
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7645128224048062345, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
       propertyPath: m_Name

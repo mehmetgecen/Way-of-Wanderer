@@ -15,7 +15,7 @@ namespace RPG.Combat
         
         Health _target;
         private float _distance;
-        private float _timeSinceLastAttack;
+        private float _timeSinceLastAttack = Mathf.Infinity;
 
         private void Update()
         {

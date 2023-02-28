@@ -1,17 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Movement;
 using RPG.Combat;
+using RPG.Core;
 using UnityEngine.UIElements;
 
 namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {
+        private Health health;
+        
+        private void Start()
+        {
+            health = GetComponent<Health>();
+        }
+
         void Update()
         {
-            // Action Priority Implementation 
+            // Action Priority Implementation
+            if(health.IsDead()) return;
+             
             if (InteractWithCombat()) return;
             if (InteractWithMovement()) return;
             print("Nothing to do.");
