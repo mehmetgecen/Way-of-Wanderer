@@ -5,13 +5,16 @@ using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace RPG.Control
 {
     public class AIController : MonoBehaviour
     {
-        [SerializeField] float chaseDistance = 5f;
+        [SerializeField] private float chaseDistance = 5f;
         [SerializeField] private float suspicionDuration = 5f;
+        [SerializeField] private float waypointDwellTime = 2f;
+        [SerializeField] private float waypointTolerance = 1f;
         [SerializeField] PatrolPath patrolPath;
         
         //Cache References
@@ -20,8 +23,11 @@ namespace RPG.Control
         private Mover _mover;
         private Fighter _fighter;
         private Health _health;
+        
         private float _timeSinceLastSawPlayer = Mathf.Infinity;
-        private float _waypointTolerance = 1f;
+        private float _timeSinceArrivedAtWaypoint = Mathf.Infinity;
+        
+        
         private int _currentWaypointIndex = 0;
         
         private void Start()
@@ -39,7 +45,6 @@ namespace RPG.Control
             
             if (IsInAttackRange() && _fighter.CanAttack(_player))
             {
-                _timeSinceLastSawPlayer = 0;
                 AttackBehaviour();
             }
             
@@ -50,15 +55,26 @@ namespace RPG.Control
 
             else
             {
-                PatrolBehaviour();
+                if (patrolPath!= null)
+                {
+                    PatrolBehaviour();
+                }
+                
             }
 
-            _timeSinceLastSawPlayer += Time.deltaTime;
+            UpdateTimers();
+        }
 
+        private void UpdateTimers()
+        {
+            _timeSinceLastSawPlayer += Time.deltaTime;
+            _timeSinceArrivedAtWaypoint += Time.deltaTime;
         }
 
         private void PatrolBehaviour()
         {
+            GetComponent<NavMeshAgent>().speed = 2f;
+            
             Vector3 nextPosition = _guardPos;
             
             if (patrolPath!= null)
@@ -66,12 +82,18 @@ namespace RPG.Control
                 if (AtWaypoint())
                 { 
                     CycleWaypoint();
+                    _timeSinceArrivedAtWaypoint = 0;
                 }
 
                 nextPosition = GetCurrentWaypoint();
-            }    
+            }
+
+            if (_timeSinceArrivedAtWaypoint >=waypointDwellTime)
+            {
+                _mover.StartMoveAction(nextPosition);
+            }
             
-            _mover.StartMoveAction(nextPosition);
+            
         }
 
         private Vector3 GetCurrentWaypoint()
@@ -87,7 +109,7 @@ namespace RPG.Control
         private bool AtWaypoint()
         {
             float joinPathDistance = Vector3.Distance(transform.position,GetCurrentWaypoint());
-            return joinPathDistance < _waypointTolerance;
+            return joinPathDistance < waypointTolerance;
         }
         
 
@@ -103,7 +125,10 @@ namespace RPG.Control
 
         private void AttackBehaviour()
         {
+            GetComponent<NavMeshAgent>().speed = 5f;
+            _timeSinceLastSawPlayer = 0;
             _fighter.Attack(_player);
+            
         }
 
         private bool IsInAttackRange()
