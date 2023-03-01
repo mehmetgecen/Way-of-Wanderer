@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace RPG.Core
@@ -27,9 +28,9 @@ namespace RPG.Core
             _isDead = true;
             GetComponent<Animator>().SetTrigger("Die");
             GetComponent<ActionScheduler>().CancelCurrentAction();
-
+            
         }
-
+        
         public bool IsDead()
         {
             return _isDead;
