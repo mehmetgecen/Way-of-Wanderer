@@ -15,6 +15,8 @@ namespace RPG.Control
         [SerializeField] private float suspicionDuration = 5f;
         [SerializeField] private float waypointDwellTime = 2f;
         [SerializeField] private float waypointTolerance = 1f;
+        [SerializeField] private float patrolMovementSpeed = 2f;
+        [SerializeField] private float attackMovementSpeed = 5f;
         [SerializeField] PatrolPath patrolPath;
         
         //Cache References
@@ -59,6 +61,11 @@ namespace RPG.Control
                 {
                     PatrolBehaviour();
                 }
+
+                else
+                {
+                    GuardBehaviour();
+                }
                 
             }
 
@@ -73,7 +80,7 @@ namespace RPG.Control
 
         private void PatrolBehaviour()
         {
-            GetComponent<NavMeshAgent>().speed = 2f;
+            GetComponent<NavMeshAgent>().speed = patrolMovementSpeed;
             
             Vector3 nextPosition = _guardPos;
             
@@ -125,7 +132,7 @@ namespace RPG.Control
 
         private void AttackBehaviour()
         {
-            GetComponent<NavMeshAgent>().speed = 5f;
+            GetComponent<NavMeshAgent>().speed = attackMovementSpeed;
             _timeSinceLastSawPlayer = 0;
             _fighter.Attack(_player);
             
