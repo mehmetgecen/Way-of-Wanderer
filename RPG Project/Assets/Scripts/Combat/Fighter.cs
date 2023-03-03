@@ -94,12 +94,12 @@ namespace RPG.Combat
         {
             return Vector3.Distance(_target.transform.position, transform.position) < weaponRange;
         }
-
         
         public void Cancel()
         {
             StopAttackAnimatons();
             _target = null;
+            GetComponent<Mover>().Cancel();
         }
 
         private void StopAttackAnimatons()
