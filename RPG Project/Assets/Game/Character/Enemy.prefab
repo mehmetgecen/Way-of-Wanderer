@@ -61,6 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2112871066, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
+    - {fileID: 5809498728940494420, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
 --- !u!1 &4823366980432240919 stripped
 GameObject:
@@ -80,6 +81,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDistance: 5
+  suspicionDuration: 5
+  waypointDwellTime: 2
+  waypointTolerance: 1
+  patrolMovementSpeed: 2
+  attackMovementSpeed: 5
+  patrolPath: {fileID: 0}
 --- !u!4 &6752664592079232713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8457392316792709207, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
