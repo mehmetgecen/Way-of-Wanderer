@@ -10,8 +10,8 @@ namespace RPG.Combat
     public class Fighter : MonoBehaviour,IAction
     {
         [SerializeField] private float weaponRange = 2f;
-        [SerializeField] private float weaponDamage = 5f;
-        [SerializeField] private float attackCooldown = 1f;
+        [SerializeField] private float weaponDamage = 20f;
+        [SerializeField] private float attackCooldown = 2f;
         
         Health _target;
         private float _distance;
@@ -44,9 +44,9 @@ namespace RPG.Combat
             
             if (_timeSinceLastAttack >= attackCooldown)
             {
-                TriggerAttackAnimations();
                 _timeSinceLastAttack = 0;
-                Hit();
+                TriggerAttackAnimations();
+                print("Attack Behaviour Called.");
             }
         }
 
@@ -59,7 +59,7 @@ namespace RPG.Combat
         // Attack function must be generic in order to use by AI.
         // Player has no combatTarget component.
         // Our attacks are triggering by mouse click input.
-        // AI cant click so we need to update our generic attack behaviout.
+        // AI cant click so we need to update our generic attack behaviour.
         // CombatTarget types converted to GameObject.
         public bool CanAttack(GameObject combatTarget)
         {
@@ -78,16 +78,12 @@ namespace RPG.Combat
             GetComponent<ActionScheduler>().StartAction(this);
         }
         
-        // Important !
-        // Animation Event called by Animator.
-        // Health reducement of target will wait until the animation cycle ends.
-        // If a normal method were implemented,damage will applied to target instantly.
+        
+        // Animation Event called by Unity
         private void Hit()
         {
             if (_target == null) return;
-            
             _target.TakeDamage(weaponDamage);
-            
         }
 
         private bool IsInRange()

@@ -8,8 +8,6 @@ namespace RPG.Cinematics
 {
     public class CinematicTrigger : MonoBehaviour
     {
-        public event Action<float> onFinish;
-
         private bool _alreadyTriggered = false;
         
         private void OnTriggerEnter(Collider other)
