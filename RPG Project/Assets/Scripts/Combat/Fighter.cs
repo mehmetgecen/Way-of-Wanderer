@@ -12,13 +12,24 @@ namespace RPG.Combat
         [SerializeField] private float weaponRange = 2f;
         [SerializeField] private float weaponDamage = 20f;
         [SerializeField] private float attackCooldown = 2f;
+        [SerializeField] private GameObject weaponPrefab;
+        [SerializeField] private Transform handTransform;
         
         Health _target;
         private float _distance;
         private float _timeSinceLastAttack = Mathf.Infinity;
-
+        
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                if (weaponPrefab!=null)
+                {
+                    SpawnWeapon();
+                }
+                
+            }
+            
             _timeSinceLastAttack += Time.deltaTime;
             
             if (_target == null) return;
@@ -36,6 +47,11 @@ namespace RPG.Combat
                     AttackBehaviour();
                 }
             }
+        }
+        
+        private void SpawnWeapon()
+        {
+            Instantiate(weaponPrefab, handTransform);
         }
 
         private void AttackBehaviour()
