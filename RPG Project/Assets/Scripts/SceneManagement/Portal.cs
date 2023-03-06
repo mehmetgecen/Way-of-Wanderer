@@ -14,6 +14,9 @@ namespace RPG.SceneManagement
         [SerializeField] private int sceneIndex = -1;
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private PortalDestination destination;
+        [SerializeField] private float fadeOutDuration;
+        [SerializeField] private float fadeInDuration;
+        [SerializeField] private float fadeWaitDuration;
 
         enum PortalDestination
         {
@@ -35,14 +38,21 @@ namespace RPG.SceneManagement
                 Debug.Log("No Scene to load.");
                 yield break;
             }
-            
             DontDestroyOnLoad(gameObject);
-            yield return SceneManager.LoadSceneAsync(sceneIndex);
-            print("Portal Loaded");
+            
+            Fader fader = GameObject.FindObjectOfType<Fader>();
 
+            yield return fader.FadeOut(fadeOutDuration);
+            yield return SceneManager.LoadSceneAsync(sceneIndex);
+            
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
+            
+            yield return new WaitForSeconds(fadeWaitDuration);
+            yield return fader.FadeIn(fadeInDuration);
+           
             Destroy(gameObject);
+            
         }
 
         private void UpdatePlayer(Portal otherPortal)
