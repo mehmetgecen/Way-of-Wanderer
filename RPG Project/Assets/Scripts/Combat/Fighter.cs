@@ -11,7 +11,9 @@ namespace RPG.Combat
     {
         [SerializeField] private float attackCooldown = 2f;
         [SerializeField] private Weapon defaultWeapon = null;
-        [SerializeField] private Transform handTransform = null;
+        [SerializeField] private Transform rightHandTransform = null;
+        [SerializeField] private Transform leftHandTransform = null;
+        
         //[SerializeField] private GameObject swordHolder;
         
         private Weapon currentWeapon;
@@ -55,7 +57,7 @@ namespace RPG.Combat
         {
             currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(handTransform,animator);
+            weapon.Spawn(rightHandTransform,leftHandTransform,animator);
             
         }
 
@@ -104,7 +106,21 @@ namespace RPG.Combat
         private void Hit()
         {
             if (_target == null) return;
-            _target.TakeDamage(currentWeapon.WeaponDamage);
+            
+            if (currentWeapon.HasProjectile())
+            {
+                currentWeapon.LaunchProjectile(rightHandTransform,leftHandTransform,_target);
+            }
+            else
+            {
+                _target.TakeDamage(currentWeapon.WeaponDamage);
+            }
+            
+        }
+
+        void Shoot()
+        {
+            Hit();
         }
 
         private bool IsInRange()
