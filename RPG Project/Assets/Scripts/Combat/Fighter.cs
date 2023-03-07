@@ -9,25 +9,27 @@ namespace RPG.Combat
 {
     public class Fighter : MonoBehaviour,IAction
     {
-        [SerializeField] private float weaponRange = 2f;
-        [SerializeField] private float weaponDamage = 20f;
         [SerializeField] private float attackCooldown = 2f;
-        [SerializeField] private GameObject weaponPrefab;
-        [SerializeField] private Transform handTransform;
+        [SerializeField] private Weapon defaultWeapon = null;
+        [SerializeField] private Transform handTransform = null;
+        //[SerializeField] private GameObject swordHolder;
         
-        Health _target;
+        private Weapon currentWeapon;
+        private Health _target;
+        
         private float _distance;
         private float _timeSinceLastAttack = Mathf.Infinity;
-        
+
+        private void Start()
+        {
+            EquipWeapon(defaultWeapon);
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                if (weaponPrefab!=null)
-                {
-                    SpawnWeapon();
-                }
-                
+                EquipWeapon(currentWeapon);
             }
             
             _timeSinceLastAttack += Time.deltaTime;
@@ -49,9 +51,12 @@ namespace RPG.Combat
             }
         }
         
-        private void SpawnWeapon()
+        public void EquipWeapon(Weapon weapon)
         {
-            Instantiate(weaponPrefab, handTransform);
+            currentWeapon = weapon;
+            Animator animator = GetComponent<Animator>();
+            weapon.Spawn(handTransform,animator);
+            
         }
 
         private void AttackBehaviour()
@@ -99,12 +104,12 @@ namespace RPG.Combat
         private void Hit()
         {
             if (_target == null) return;
-            _target.TakeDamage(weaponDamage);
+            _target.TakeDamage(currentWeapon.WeaponDamage);
         }
 
         private bool IsInRange()
         {
-            return Vector3.Distance(_target.transform.position, transform.position) < weaponRange;
+            return Vector3.Distance(_target.transform.position, transform.position) < currentWeapon.WeaponRange;
         }
         
         public void Cancel()
