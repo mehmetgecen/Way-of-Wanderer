@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bow
   m_EditorClassIdentifier: 
   weaponRange: 15
-  weaponDamage: 50
+  weaponDamage: 20
   weaponPrefab: {fileID: 6209732306898968960, guid: dea22bf6e6439a145bed032c1c5d42a1, type: 3}
   animatorOverride: {fileID: 22100000, guid: 32ccd4f345203c841be3ee095221f1f0, type: 2}
   isRightHanded: 0
