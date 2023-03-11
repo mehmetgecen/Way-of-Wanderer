@@ -6024,7 +6024,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443987867}
-  m_LocalRotation: {x: -0.0823665, y: 0.89019126, z: -0.1783805, w: -0.4110423}
+  m_LocalRotation: {x: 0.20297274, y: -0.38226673, z: 0.086467505, w: 0.8973281}
   m_LocalPosition: {x: 21.1, y: 11.2, z: 6.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9120,7 +9120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1748136237}
-  m_PathPosition: 0
+  m_PathPosition: 1.974986
   m_PositionUnits: 0
   m_PathOffset: {x: -1.6995447, y: 0.69883054, z: -0.9835804}
   m_XDamping: 0
@@ -9622,6 +9622,30 @@ PrefabInstance:
     - target: {fileID: 6630526445328883863, guid: 2ebea332e9a1f2b4297e6d729b9cf834, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630526445328883863, guid: 2ebea332e9a1f2b4297e6d729b9cf834, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630526445328883863, guid: 2ebea332e9a1f2b4297e6d729b9cf834, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630526445328883863, guid: 2ebea332e9a1f2b4297e6d729b9cf834, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630526445328883863, guid: 2ebea332e9a1f2b4297e6d729b9cf834, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -69.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630526445328883863, guid: 2ebea332e9a1f2b4297e6d729b9cf834, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630526445328883863, guid: 2ebea332e9a1f2b4297e6d729b9cf834, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 8059856915078284203, guid: 2ebea332e9a1f2b4297e6d729b9cf834, type: 3}
       propertyPath: m_RootOrder
