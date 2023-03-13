@@ -29,11 +29,6 @@ namespace RPG.Combat
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                EquipWeapon(currentWeapon);
-            }
-            
             _timeSinceLastAttack += Time.deltaTime;
             
             if (_target == null) return;

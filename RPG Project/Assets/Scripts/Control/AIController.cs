@@ -140,8 +140,15 @@ namespace RPG.Control
 
         private bool IsInAttackRange()
         {
+            if (_health.isDamageTaken())
+            {
+                return true;
+            }
+            
             var distanceToPlayer = Vector3.Distance(gameObject.transform.position, _player.transform.position);
             return distanceToPlayer < chaseDistance;
+            
+
         }
 
         // Called from Unity
