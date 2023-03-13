@@ -4,19 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
+using RPG.Saving;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour,IAction
+    public class Fighter : MonoBehaviour,IAction,ISaveable
     {
         [SerializeField] private float attackCooldown = 2f;
         [SerializeField] private Weapon defaultWeapon = null;
         [SerializeField] private Transform rightHandTransform = null;
         [SerializeField] private Transform leftHandTransform = null;
         
-        //[SerializeField] private GameObject swordHolder;
-        
-        private Weapon currentWeapon;
+        private Weapon _currentWeapon = null;
         private Health _target;
         
         private float _distance;
@@ -24,7 +23,10 @@ namespace RPG.Combat
 
         private void Start()
         {
-            EquipWeapon(defaultWeapon);
+            if (_currentWeapon == null)
+            {
+                EquipWeapon(defaultWeapon);    
+            }
         }
 
         private void Update()
@@ -50,7 +52,7 @@ namespace RPG.Combat
         
         public void EquipWeapon(Weapon weapon)
         {
-            currentWeapon = weapon;
+            _currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(rightHandTransform,leftHandTransform,animator);
             
@@ -102,13 +104,13 @@ namespace RPG.Combat
         {
             if (_target == null) return;
             
-            if (currentWeapon.HasProjectile())
+            if (_currentWeapon.HasProjectile())
             {
-                currentWeapon.LaunchProjectile(rightHandTransform,leftHandTransform,_target);
+                _currentWeapon.LaunchProjectile(rightHandTransform,leftHandTransform,_target);
             }
             else
             {
-                _target.TakeDamage(currentWeapon.WeaponDamage);
+                _target.TakeDamage(_currentWeapon.WeaponDamage);
             }
             
         }
@@ -120,7 +122,7 @@ namespace RPG.Combat
 
         private bool IsInRange()
         {
-            return Vector3.Distance(_target.transform.position, transform.position) < currentWeapon.WeaponRange;
+            return Vector3.Distance(_target.transform.position, transform.position) < _currentWeapon.WeaponRange;
         }
         
         public void Cancel()
@@ -134,6 +136,18 @@ namespace RPG.Combat
         {
             GetComponent<Animator>().ResetTrigger("Attack");
             GetComponent<Animator>().SetTrigger("CancelAttack");
+        }
+
+        public object CaptureState()
+        {
+            return _currentWeapon.name;
+        }
+
+        public void RestoreState(object state)
+        {
+            string weaponName = (string)state;
+            Weapon weapon = Resources.Load<Weapon>(weaponName);
+            EquipWeapon(weapon);
         }
     }
 }
