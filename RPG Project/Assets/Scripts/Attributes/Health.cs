@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using RPG.Saving;
+using RPG.Core;
+using RPG.Stats;
 using UnityEngine;
 
-namespace RPG.Core
+namespace RPG.Attributes
 {
     public class Health : MonoBehaviour,ISaveable
     {
@@ -16,6 +18,7 @@ namespace RPG.Core
 
         private void Start()
         {
+            health = GetComponent<BaseStats>().GetHealth();
             startHealth = health;
         }
 

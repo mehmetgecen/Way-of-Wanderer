@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: Progression
   m_EditorClassIdentifier: 
   characterClassProgress:
-    characterClass: 0
-    healthValues: 3200000050000000640000008c000000c8000000
+  - characterClass: 0
+    healthValues: c8000000dc000000fa0000002c01000090010000
+  - characterClass: 1
+    healthValues: 6400000091000000e10000002c010000f4010000
+  - characterClass: 2
+    healthValues: 4b0000005a00000087000000b4000000c8000000
+  - characterClass: 3
+    healthValues: 320000008c000000b4000000c8000000e1000000
