@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: defaultWeapon
       value: 
       objectReference: {fileID: 11400000, guid: 5d0318c7210dc6f419a6e25c33a8b432, type: 2}
+    - target: {fileID: 2066556156268105829, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
+      propertyPath: characterClass
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4823366980432240919, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
       propertyPath: m_Name
       value: Archer
@@ -71,7 +75,8 @@ PrefabInstance:
       propertyPath: characterClass
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9075558283396585379, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
 --- !u!1 &1671794637190885380 stripped
 GameObject:

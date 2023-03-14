@@ -11,6 +11,7 @@ namespace RPG.Stats
         [SerializeField] int startLevel = 1;
 
         [SerializeField] private CharacterClass characterClass;
+        [SerializeField] private Progression progression = null;
     }
 }
 

@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5456928110774554885, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
+      propertyPath: characterClass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1404130102170956430, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
       propertyPath: health
       value: 40
@@ -131,20 +135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c0f7886538d2464b87449d899e7be0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9075558283396585379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4823366980432240919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f75240591ffcefb4fa0352db5493d952, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startLevel: 1
-  characterClass: 1
 --- !u!4 &6752664592079232713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8457392316792709207, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
