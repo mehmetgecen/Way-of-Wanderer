@@ -20,4 +20,4 @@ MonoBehaviour:
   - characterClass: 2
     healthValues: 4b0000005a00000087000000b4000000c8000000
   - characterClass: 3
-    healthValues: 320000008c000000b4000000c8000000e1000000
+    healthValues: 320000005f000000b4000000c8000000e1000000

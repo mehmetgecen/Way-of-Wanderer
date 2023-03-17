@@ -51,6 +51,11 @@ namespace RPG.Attributes
             return _isDead;
         }
 
+        public float GetPercentage()
+        {
+            return (health / startHealth) * 100;
+        }
+
         // Save Health Value
         
         public object CaptureState()
