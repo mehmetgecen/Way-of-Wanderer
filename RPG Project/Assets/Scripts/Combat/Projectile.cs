@@ -17,7 +17,8 @@ namespace RPG.Combat
             
         
         float _projectileDamage;
-        Health _target;
+        Health _target = null;
+        GameObject instigator = null;
     
         private void Start()
         {
@@ -34,10 +35,11 @@ namespace RPG.Combat
             transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
         }
     
-        public void SetTarget(Health target,float damage)
+        public void SetTarget(Health target,GameObject instigator,float damage)
         {
             _target = target;
             _projectileDamage = damage;
+            this.instigator = instigator;
             
             Destroy(gameObject,maxLifetime);
         }
@@ -60,7 +62,7 @@ namespace RPG.Combat
 
             
             Destroy(gameObject);
-            other.gameObject.GetComponent<Health>().TakeDamage(_projectileDamage);
+            _target.TakeDamage(instigator,_projectileDamage);
             projectileSpeed = 0;
     
             if (gameObject.name.Contains("Fireball")) // will be edited for performance issues

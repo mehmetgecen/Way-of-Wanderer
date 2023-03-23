@@ -13,22 +13,26 @@ namespace RPG.Attributes
     {
         [SerializeField] float health = 20f;
         [SerializeField] private float startHealth;
+
+        private GameObject instigator = null;
         
         bool _isDead = false;
+        
 
-        private void Start()
+         private void Start()
         {
             health = GetComponent<BaseStats>().GetHealth();
             startHealth = health;
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator,float damage)
         {
             health = Mathf.Max(health - damage, 0);
             
             if (health==0)
             {
                 Die();
+                AwardExperience(instigator);
             }
         }
 
@@ -40,6 +44,16 @@ namespace RPG.Attributes
             GetComponent<Animator>().SetTrigger("Die");
             GetComponent<ActionScheduler>().CancelCurrentAction();
             
+            
+        }
+
+        private void AwardExperience(GameObject instigator)
+        {
+            Experience experience = instigator.GetComponent<Experience>();
+
+            if (experience == null) return;
+            
+            experience.GainExperience(GetComponent<BaseStats>().GetExperienceReward());
         }
 
         public bool isDamageTaken()
