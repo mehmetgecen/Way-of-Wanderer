@@ -21,7 +21,7 @@ namespace RPG.Attributes
 
          private void Start()
         {
-            health = GetComponent<BaseStats>().GetHealth();
+            health = GetComponent<BaseStats>().GetStat(Stat.Heatlh);
             startHealth = health;
         }
 
@@ -53,7 +53,7 @@ namespace RPG.Attributes
 
             if (experience == null) return;
             
-            experience.GainExperience(GetComponent<BaseStats>().GetExperienceReward());
+            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
         }
 
         public bool isDamageTaken()

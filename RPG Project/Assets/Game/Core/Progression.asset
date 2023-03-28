@@ -14,10 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterClassProgress:
   - characterClass: 0
-    healthValues: c8000000dc000000fa0000002c01000090010000
+    stats:
+    - stat: 0
+      levels:
+      - 200
+      - 300
+      - 400
+      - 500
+      - 600
+    - stat: 1
+      levels: []
   - characterClass: 1
-    healthValues: 6400000091000000e10000002c010000f4010000
+    stats:
+    - stat: 0
+      levels:
+      - 100
+      - 200
+      - 250
+    - stat: 1
+      levels:
+      - 10
+      - 20
+      - 30
+      - 50
   - characterClass: 2
-    healthValues: 4b0000005a00000087000000b4000000c8000000
+    stats: []
   - characterClass: 3
-    healthValues: 320000005f000000b4000000c8000000e1000000
+    stats:
+    - stat: 0
+      levels:
+      - 50
+      - 70
+      - 90
+      - 100
+    - stat: 0
+      levels:
+      - 30
+      - 50
+      - 80
+      - 90
