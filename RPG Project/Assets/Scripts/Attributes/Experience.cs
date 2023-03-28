@@ -11,7 +11,12 @@ public class Experience : MonoBehaviour,ISaveable
     {
         experiencePoints += experience;
     }
-
+    
+    public float GetPoints()
+    {
+        return experiencePoints;
+    }
+    
     public object CaptureState()
     {
         return experiencePoints;
@@ -21,4 +26,6 @@ public class Experience : MonoBehaviour,ISaveable
     {
         experiencePoints = (float)state;
     }
+
+    
 }
