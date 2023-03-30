@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Stats
@@ -7,26 +8,45 @@ namespace RPG.Stats
     {
         [SerializeField] private CharacterClassProgression[] characterClassProgress;
 
+        private Dictionary<CharacterClass, Dictionary<Stat, float[]>> lookupTable;
         public float GetStat(Stat stat,CharacterClass characterClass, int level)
         {
-            foreach (CharacterClassProgression progressionClass in characterClassProgress)
+            BuildLookUp();
+            
+            float[] levels = lookupTable[characterClass][stat];
+
+            if (levels.Length < level)
             {
-                if (progressionClass.characterClass != characterClass) continue;
-
-                foreach (ProgressionStat progressionStat in progressionClass.stats )
-                {
-                    if (progressionStat.stat != stat) continue;
-
-                    if (progressionStat.levels.Length < level) continue;
-                    
-                    return progressionStat.levels[level - 1];
-                    
-                }
+                return 0;
             }
 
-            return 0;
+            return levels[level - 1]; 
+            
         }
-        
+
+        // New Lookup technic with dictionaries.
+        // Searches only one when called.
+        // More Performant.
+        private void BuildLookUp()
+        {
+            if (lookupTable == null) return;
+
+            lookupTable = new Dictionary<CharacterClass, Dictionary<Stat, float[]>>();
+
+            foreach (CharacterClassProgression progressionClass in characterClassProgress)
+            {
+                var statLookUpTable = new Dictionary<Stat, float[]>();
+
+                foreach (ProgressionStat progressionStat in progressionClass.stats)
+                {
+                    statLookUpTable[progressionStat.stat] = progressionStat.levels;
+                }
+
+                lookupTable[progressionClass.characterClass] = statLookUpTable;
+            }
+            
+        }
+
         [System.Serializable]
         class CharacterClassProgression
         {

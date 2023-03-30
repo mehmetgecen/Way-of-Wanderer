@@ -4,18 +4,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class XPDisplay : MonoBehaviour
+namespace RPG.Attributes
 {
-    private Experience experience;
+    public class XPDisplay : MonoBehaviour
+    {
+        private Experience experience;
     
-    private void Awake()
-    {
-        experience = GameObject.FindWithTag("Player").GetComponent<Experience>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        GetComponent<TextMeshProUGUI>().text = String.Format("{0:0}",experience.GetPoints());
+        private void Awake()
+        {
+            experience = GameObject.FindWithTag("Player").GetComponent<Experience>();
+        }
+        
+        void Update()
+        {
+            GetComponent<TextMeshProUGUI>().text = String.Format("{0:0}",experience.GetPoints());
+        }
     }
 }
+

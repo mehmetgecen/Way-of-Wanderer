@@ -1289,7 +1289,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406479894}
-  m_LocalRotation: {x: 0.21711648, y: 0.24891227, z: -0.057362404, w: 0.942132}
+  m_LocalRotation: {x: 0.21711645, y: 0.24891223, z: -0.05736239, w: 0.942132}
   m_LocalPosition: {x: -5.43, y: 2.63, z: -14.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2031,6 +2031,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 629671443}
     m_Modifications:
+    - target: {fileID: -5456928110774554885, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
+      propertyPath: characterClass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -342304420457082086, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
       propertyPath: uniqueIdentifier
       value: 5e0c32a0-de57-4a81-bd20-9c2e4bde9bec
@@ -5795,7 +5799,7 @@ PrefabInstance:
     - target: {fileID: 6517237610797023783, guid: 83365b938d7b1974986c104632efdab1, type: 3}
       propertyPath: defaultWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 5ec8f55c44479f442a990cbf05637673, type: 2}
+      objectReference: {fileID: 11400000, guid: bfd6ea2804dbacc48810483e45cf0b55, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83365b938d7b1974986c104632efdab1, type: 3}
 --- !u!1 &1355455469 stripped
@@ -10417,6 +10421,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2911927343738956910, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.2999878
+      objectReference: {fileID: 0}
     - target: {fileID: 4917770661192813651, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
       propertyPath: weaponPrefab
       value: 
@@ -10600,6 +10608,10 @@ PrefabInstance:
     - target: {fileID: 8402151896387465123, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 3.9290771
+      objectReference: {fileID: 0}
+    - target: {fileID: 8402700811537621823, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.2999878
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
