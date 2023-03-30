@@ -7,7 +7,8 @@ namespace RPG.Stats
     public enum Stat
     {
         Heatlh,
-        ExperienceReward
+        ExperienceReward,
+        ExperienceToLevelUp
     }
 }
 

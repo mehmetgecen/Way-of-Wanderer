@@ -17,6 +17,27 @@ namespace RPG.Stats
         {
             return progression.GetStat(stat, characterClass, startLevel);
         }
+
+        public float GetLevel()
+        {
+            float currentXP = GetComponent<Experience>().GetPoints();
+
+            int penultimateLevel = progression.GetLevels(Stat.ExperienceToLevelUp, characterClass);
+
+            for (int level = 1; level < penultimateLevel; level++)
+            {
+                float XPToLevelUP = progression.GetStat(Stat.ExperienceToLevelUp, characterClass, level);
+                
+                if (XPToLevelUP > currentXP)
+                {
+                    return level;
+                }
+                
+            }
+
+            return penultimateLevel + 1;
+
+        }
     }
 }
 
