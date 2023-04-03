@@ -1,0 +1,10 @@
+{
+    "name": "EditMode",
+    "references": [ "Unity.TextMeshPro" ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ]
+}
