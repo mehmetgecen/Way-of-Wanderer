@@ -141,7 +141,7 @@ namespace RPG.Control
 
         private bool IsInAttackRange()
         {
-            if (_health.isDamageTaken())
+            if (_health.IsDamageTaken())
             {
                 return true;
             }

@@ -23,6 +23,14 @@ namespace RPG.Stats
             return levels[level - 1]; 
             
         }
+        
+        public int GetLevels(Stat stat, CharacterClass characterClass)
+        {
+            BuildLookUp();
+
+            float[] levels = lookupTable[characterClass][stat];
+            return levels.Length;
+        }
 
         // New Lookup technic with dictionaries.
         // Searches only one when called.
@@ -46,14 +54,7 @@ namespace RPG.Stats
             }
             
         }
-
-        public int GetLevels(Stat stat, CharacterClass characterClass)
-        {
-            BuildLookUp();
-
-            float[] levels = lookupTable[characterClass][stat];
-            return levels.Length;
-        }
+        
 
         [System.Serializable]
         class CharacterClassProgression

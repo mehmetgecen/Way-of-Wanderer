@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using RPG.Stats;
@@ -13,22 +14,34 @@ namespace RPG.Stats
         [SerializeField] private CharacterClass characterClass;
         [SerializeField] private Progression progression = null;
 
-        public float GetStat(Stat stat)
+        private void Update()
         {
-            return progression.GetStat(stat, characterClass, startLevel);
+            if (gameObject.CompareTag("Player"))
+            {
+                print(GetLevel());
+            }
         }
 
-        public float GetLevel()
+        public float GetStat(Stat stat)
         {
-            float currentXP = GetComponent<Experience>().GetPoints();
+            return progression.GetStat(stat, characterClass, GetLevel());
+        }
+
+        public int GetLevel()
+        {
+            Experience experience = GetComponent<Experience>();
+
+            if (experience == null) return startLevel;
+            
+            float currentXP = experience.GetPoints();
 
             int penultimateLevel = progression.GetLevels(Stat.ExperienceToLevelUp, characterClass);
 
             for (int level = 1; level < penultimateLevel; level++)
             {
-                float XPToLevelUP = progression.GetStat(Stat.ExperienceToLevelUp, characterClass, level);
+                float xpToLevelUp = progression.GetStat(Stat.ExperienceToLevelUp, characterClass, level);
                 
-                if (XPToLevelUP > currentXP)
+                if (xpToLevelUp > currentXP)
                 {
                     return level;
                 }

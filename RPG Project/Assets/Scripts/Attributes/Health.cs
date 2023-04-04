@@ -56,7 +56,7 @@ namespace RPG.Attributes
             experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
         }
 
-        public bool isDamageTaken()
+        public bool IsDamageTaken()
         {
             return health < startHealth;
         }
