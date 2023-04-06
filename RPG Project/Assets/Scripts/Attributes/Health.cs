@@ -11,17 +11,20 @@ namespace RPG.Attributes
 {
     public class Health : MonoBehaviour,ISaveable
     {
-        [SerializeField] float health = 20f;
-        [SerializeField] private float startHealth;
+        float health = -1f;
+        float startHealth;
 
-        private GameObject instigator = null;
-        
-        bool _isDead = false;
+        private GameObject _instigator = null;
+        private bool _isDead = false;
         
 
          private void Start()
         {
-            health = GetComponent<BaseStats>().GetStat(Stat.Heatlh);
+            if (health<0)
+            {
+                health = GetComponent<BaseStats>().GetStat(Stat.Heatlh);    
+            }
+            
             startHealth = health;
         }
 
