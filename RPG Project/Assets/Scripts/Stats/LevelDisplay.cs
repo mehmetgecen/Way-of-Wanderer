@@ -17,6 +17,6 @@ public class LevelDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<TextMeshProUGUI>().text = baseStats.GetLevel().ToString();
+        GetComponent<TextMeshProUGUI>().text = baseStats.CalculateLevel().ToString();
     }
 }

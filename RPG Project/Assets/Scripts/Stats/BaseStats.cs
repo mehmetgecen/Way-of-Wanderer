@@ -14,20 +14,42 @@ namespace RPG.Stats
         [SerializeField] private CharacterClass characterClass;
         [SerializeField] private Progression progression = null;
 
-        private void Update()
+        int currentLevel = 0;
+
+        private void Start()
         {
-            if (gameObject.CompareTag("Player"))
+            currentLevel = CalculateLevel();
+
+            Experience experience = GetComponent<Experience>();
+
+            if (experience!=null)
             {
-                print(GetLevel());
+                experience.onExperienceGained += CheckLevelIncrement;
+            }
+        }
+
+        private void Update() 
+        {
+            CheckLevelIncrement();
+        }
+
+        private void CheckLevelIncrement()
+        {
+            int newLevel = CalculateLevel();
+
+            if (newLevel > currentLevel)
+            {
+                currentLevel = newLevel;
+                print("Levelled Up!");
             }
         }
 
         public float GetStat(Stat stat)
         {
-            return progression.GetStat(stat, characterClass, GetLevel());
+            return progression.GetStat(stat, characterClass, CalculateLevel());
         }
 
-        public int GetLevel()
+        public int CalculateLevel()
         {
             Experience experience = GetComponent<Experience>();
 
@@ -50,6 +72,16 @@ namespace RPG.Stats
 
             return penultimateLevel + 1;
 
+        }
+
+        public int GetLevel()
+        {
+            if (currentLevel < 1)
+            {
+                currentLevel = CalculateLevel();
+            }
+            
+            return currentLevel;
         }
     }
 }
