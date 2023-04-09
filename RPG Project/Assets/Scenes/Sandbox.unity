@@ -10606,6 +10606,10 @@ PrefabInstance:
       propertyPath: m_margin.w
       value: 0.21352194
       objectReference: {fileID: 0}
+    - target: {fileID: 6278031368505757442, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
+      propertyPath: levelUpParticle
+      value: 
+      objectReference: {fileID: 6045400674752121603, guid: 0a1a19ca0e907fd49ad131f80e14e80f, type: 3}
     - target: {fileID: 6857823359434147727, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.154

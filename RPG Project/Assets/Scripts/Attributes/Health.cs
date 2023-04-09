@@ -13,13 +13,16 @@ namespace RPG.Attributes
     {
         float health = -1f;
         float startHealth;
+        float regenerationPercentage = 70;
 
         private GameObject _instigator = null;
         private bool _isDead = false;
         
 
          private void Start()
-        {
+         {
+             GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
+            
             if (health<0)
             {
                 health = GetComponent<BaseStats>().GetStat(Stat.Heatlh);    
@@ -71,6 +74,12 @@ namespace RPG.Attributes
         public float GetPercentage()
         {
             return (health / GetComponent<BaseStats>().GetStat(Stat.Heatlh) * 100);
+        }
+
+        public void RegenerateHealth()
+        {
+            float regenHealth = GetComponent<BaseStats>().GetStat(Stat.Heatlh) * (regenerationPercentage / 100);
+            health = Mathf.Max(health, regenHealth);
         }
 
         // Save Health Value

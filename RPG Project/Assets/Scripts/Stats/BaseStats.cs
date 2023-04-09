@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Attributes;
 using RPG.Stats;
 using UnityEngine;
 
@@ -13,8 +14,11 @@ namespace RPG.Stats
 
         [SerializeField] private CharacterClass characterClass;
         [SerializeField] private Progression progression = null;
+        [SerializeField] private GameObject levelUpParticle;
 
         int currentLevel = 0;
+
+        public event Action onLevelUp;
 
         private void Start()
         {
@@ -28,20 +32,28 @@ namespace RPG.Stats
             }
         }
 
-        private void Update() 
+        /*private void Update() 
         {
             CheckLevelIncrement();
-        }
+        }*/
 
         private void CheckLevelIncrement()
         {
+            Health health = GetComponent<Health>();
+            
             int newLevel = CalculateLevel();
 
             if (newLevel > currentLevel)
             {
                 currentLevel = newLevel;
-                print("Levelled Up!");
+                LevelUpEffect();
+                onLevelUp();
             }
+        }
+
+        private void LevelUpEffect()
+        {
+            Instantiate(levelUpParticle, transform);
         }
 
         public float GetStat(Stat stat)
