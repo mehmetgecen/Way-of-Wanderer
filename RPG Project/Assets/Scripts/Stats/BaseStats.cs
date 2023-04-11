@@ -16,7 +16,7 @@ namespace RPG.Stats
         [SerializeField] private Progression progression = null;
         [SerializeField] private GameObject levelUpParticle;
 
-        int currentLevel = 0;
+        int currentLevel = 1;
 
         public event Action OnLevelUp;
 
