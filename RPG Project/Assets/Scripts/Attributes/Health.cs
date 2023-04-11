@@ -11,17 +11,16 @@ namespace RPG.Attributes
 {
     public class Health : MonoBehaviour,ISaveable
     {
-        float health = -1f;
-        float startHealth;
-        float regenerationPercentage = 70;
-
         private GameObject _instigator = null;
         private bool _isDead = false;
         
-
+        float health = -1f;
+        float startHealth;
+        float regenerationPercentage = 70;
+        
          private void Start()
          {
-             GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
+             GetComponent<BaseStats>().OnLevelUp += RegenerateHealth;
             
             if (health<0)
             {
@@ -49,7 +48,6 @@ namespace RPG.Attributes
             _isDead = true;
             GetComponent<Animator>().SetTrigger("Die");
             GetComponent<ActionScheduler>().CancelCurrentAction();
-            
             
         }
 

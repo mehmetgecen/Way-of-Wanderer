@@ -18,7 +18,7 @@ namespace RPG.Stats
 
         int currentLevel = 0;
 
-        public event Action onLevelUp;
+        public event Action OnLevelUp;
 
         private void Start()
         {
@@ -28,7 +28,7 @@ namespace RPG.Stats
 
             if (experience!=null)
             {
-                experience.onExperienceGained += CheckLevelIncrement;
+                experience.OnExperienceGained += CheckLevelIncrement;
             }
         }
 
@@ -39,15 +39,13 @@ namespace RPG.Stats
 
         private void CheckLevelIncrement()
         {
-            Health health = GetComponent<Health>();
-            
             int newLevel = CalculateLevel();
 
             if (newLevel > currentLevel)
             {
                 currentLevel = newLevel;
                 LevelUpEffect();
-                onLevelUp();
+                OnLevelUp();
             }
         }
 

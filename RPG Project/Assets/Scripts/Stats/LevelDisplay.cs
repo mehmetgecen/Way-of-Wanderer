@@ -6,17 +6,21 @@ using RPG.Stats;
 using TMPro;
 using UnityEngine;
 
-public class LevelDisplay : MonoBehaviour
+namespace RPG.Stats
 {
-    BaseStats baseStats;
-    private void Awake()
+    public class LevelDisplay : MonoBehaviour
     {
-        baseStats = GameObject.FindWithTag("Player").GetComponent<BaseStats>();
-    }
+        BaseStats baseStats;
+        private void Awake()
+        {
+            baseStats = GameObject.FindWithTag("Player").GetComponent<BaseStats>();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        GetComponent<TextMeshProUGUI>().text = baseStats.CalculateLevel().ToString();
+        // Update is called once per frame
+        void Update()
+        {
+            GetComponent<TextMeshProUGUI>().text = baseStats.CalculateLevel().ToString();
+        }
     }
 }
+

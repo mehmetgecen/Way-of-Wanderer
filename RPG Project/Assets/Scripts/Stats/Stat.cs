@@ -8,7 +8,8 @@ namespace RPG.Stats
     {
         Heatlh,
         ExperienceReward,
-        ExperienceToLevelUp
+        ExperienceToLevelUp,
+        Damage
     }
 }
 
