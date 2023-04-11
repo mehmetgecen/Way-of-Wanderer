@@ -10,7 +10,7 @@ using RPG.Stats;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour,IAction,ISaveable
+    public class Fighter : MonoBehaviour,IAction,ISaveable,IModifierProvider
     {
         [SerializeField] private float attackCooldown = 2f;
         [SerializeField] private Weapon defaultWeapon = null;
@@ -148,6 +148,14 @@ namespace RPG.Combat
             GetComponent<Animator>().ResetTrigger("Attack");
             GetComponent<Animator>().SetTrigger("CancelAttack");
         }
+        
+        public IEnumerable<float> GetAdditiveModifier(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return _currentWeapon.WeaponDamage;
+            }
+        }
 
         public object CaptureState()
         {
@@ -160,6 +168,8 @@ namespace RPG.Combat
             Weapon weapon = Resources.Load<Weapon>(weaponName);
             EquipWeapon(weapon);
         }
+
+       
     }
 }
 
