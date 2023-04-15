@@ -157,6 +157,14 @@ namespace RPG.Combat
             }
         }
 
+        public IEnumerable<float> GetPercentageModifier(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return _currentWeapon.GetPercentageBonus();
+            }
+        }
+
         public object CaptureState()
         {
             return _currentWeapon.name;

@@ -15,6 +15,7 @@ namespace RPG.Stats
         [SerializeField] private CharacterClass characterClass;
         [SerializeField] private Progression progression = null;
         [SerializeField] private GameObject levelUpParticle;
+        [SerializeField] private bool modifierAllowance = false;
 
         int currentLevel = 1;
 
@@ -31,12 +32,7 @@ namespace RPG.Stats
                 experience.OnExperienceGained += CheckLevelIncrement;
             }
         }
-
-        /*private void Update() 
-        {
-            CheckLevelIncrement();
-        }*/
-
+        
         private void CheckLevelIncrement()
         {
             int newLevel = CalculateLevel();
@@ -56,16 +52,40 @@ namespace RPG.Stats
 
         public float GetStat(Stat stat)
         {
-            return progression.GetStat(stat, characterClass, CalculateLevel()) + GetAdditiveModifier(stat);
+            return GetBaseStat(stat) + GetAdditiveModifier(stat) * (1 + (GetPercentageModifier(stat) / 100));
+        }
+        
+        private float GetBaseStat(Stat stat)
+        {
+            return progression.GetStat(stat, characterClass, CalculateLevel());
         }
 
         private float GetAdditiveModifier(Stat stat)
         {
+            if (!modifierAllowance) return 0;
+            
             float total = 0;
             
             foreach (IModifierProvider provider in GetComponents<IModifierProvider>())
             {
                 foreach (float modifier in provider.GetAdditiveModifier(stat))
+                {
+                    total += modifier;
+                }
+            }
+
+            return total;
+        }
+        
+        private float GetPercentageModifier(Stat stat)
+        {
+            if (!modifierAllowance) return 0;
+            
+            float total = 0;
+            
+            foreach (IModifierProvider provider in GetComponents<IModifierProvider>())
+            {
+                foreach (float modifier in provider.GetPercentageModifier(stat))
                 {
                     total += modifier;
                 }

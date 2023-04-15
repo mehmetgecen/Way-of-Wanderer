@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: levelUpParticle
       value: 
       objectReference: {fileID: 6045400674752121603, guid: 0a1a19ca0e907fd49ad131f80e14e80f, type: 3}
+    - target: {fileID: -5456928110774554885, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
+      propertyPath: modifierAllowance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2112871056, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
       propertyPath: m_Speed
       value: 8
