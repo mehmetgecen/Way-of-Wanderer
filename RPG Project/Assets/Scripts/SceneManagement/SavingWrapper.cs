@@ -7,6 +7,8 @@ namespace RPG.SceneManagement
 {
     public class SavingWrapper : MonoBehaviour
     {
+        // TODO will be edited later.
+        
         private const string defaultSaveFile = "save";
         
         void Update()

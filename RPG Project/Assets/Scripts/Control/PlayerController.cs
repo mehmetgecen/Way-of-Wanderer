@@ -12,8 +12,6 @@ namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {
-        // TODO will be edited later.
-        
         private Health health;
         
         private void Awake()
