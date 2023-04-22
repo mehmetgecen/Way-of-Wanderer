@@ -20,9 +20,7 @@ namespace RPG.Attributes
         
          private void Start()
          {
-             GetComponent<BaseStats>().OnLevelUp += RegenerateHealth;
-            
-            if (health<0)
+             if (health<0)
             {
                 health = GetComponent<BaseStats>().GetStat(Stat.Heatlh);    
             }
@@ -30,7 +28,17 @@ namespace RPG.Attributes
             startHealth = health;
         }
 
-        public void TakeDamage(GameObject instigator,float damage)
+         private void OnEnable()
+         {
+             GetComponent<BaseStats>().OnLevelUp += RegenerateHealth;   
+         }
+
+         private void OnDisable()
+         {
+             GetComponent<BaseStats>().OnLevelUp -= RegenerateHealth;
+         }
+
+         public void TakeDamage(GameObject instigator,float damage)
         {
             print(gameObject.name + " took damage: " + damage);
             

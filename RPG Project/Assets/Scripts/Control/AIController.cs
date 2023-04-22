@@ -32,14 +32,19 @@ namespace RPG.Control
         
         
         private int _currentWaypointIndex = 0;
-        
-        private void Start()
+
+        private void Awake()
         {
-            _guardPos = transform.position;
             _player = GameObject.FindWithTag("Player");
             _mover = GetComponent<Mover>();
             _fighter = GetComponent<Fighter>();
             _health = GetComponent<Health>();
+        }
+
+        private void Start()
+        {
+            _guardPos = transform.position;
+            
         }
 
         private void Update()

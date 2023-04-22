@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using RPG.Attributes;
@@ -16,13 +17,13 @@ namespace RPG.Movement
         private Animator _characterAnimator;
         private Health _health;
 
-        void Start()
+        private void Awake()
         {
             _playerNavMesh = GetComponent<NavMeshAgent>();
             _characterAnimator = GetComponent<Animator>();
             _health = GetComponent<Health>();
         }
-
+        
         void Update()
         {
             _playerNavMesh.enabled = !_health.IsDead();
@@ -79,9 +80,9 @@ namespace RPG.Movement
         public void RestoreState(object state)
         {
             SerializableVector3 position = (SerializableVector3) state;
-            GetComponent<NavMeshAgent>().enabled = false;
+            _playerNavMesh.enabled = false;
             transform.position = position.ToVector();
-            GetComponent<NavMeshAgent>().enabled = true;
+            _playerNavMesh.enabled = true;
         }
     }
 }

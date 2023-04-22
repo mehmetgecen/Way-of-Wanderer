@@ -12,9 +12,11 @@ namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {
+        // TODO will be edited later.
+        
         private Health health;
         
-        private void Start()
+        private void Awake()
         {
             health = GetComponent<Health>();
         }
@@ -31,6 +33,7 @@ namespace RPG.Control
 
         private bool InteractWithCombat()
         {
+
             RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
 
             foreach (RaycastHit hit in hits)

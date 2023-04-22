@@ -8,6 +8,8 @@ namespace RPG.SceneManagement
 {
     public class Fader : MonoBehaviour
     {
+        // TODO will be edited soon.
+        
         private CanvasGroup canvasGroup;
         
         private void Start()
