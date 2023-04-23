@@ -2033,7 +2033,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5456928110774554885, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
       propertyPath: startLevel
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -5456928110774554885, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
       propertyPath: characterClass
@@ -3521,8 +3521,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 629671443}
     m_Modifications:
     - target: {fileID: -5456928110774554885, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
+      propertyPath: startLevel
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -5456928110774554885, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
       propertyPath: characterClass
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -342304420457082086, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
       propertyPath: uniqueIdentifier
@@ -3735,7 +3739,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964239476}
-  m_LocalRotation: {x: 0.13941406, y: 0.6083259, z: -0.10962664, w: 0.77361834}
+  m_LocalRotation: {x: 0.13941401, y: 0.6083259, z: -0.10962661, w: 0.77361834}
   m_LocalPosition: {x: 25.99, y: 2.33, z: -22.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8152,7 +8156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5291310698962911606, guid: 83365b938d7b1974986c104632efdab1, type: 3}
       propertyPath: startLevel
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6517237610797023783, guid: 83365b938d7b1974986c104632efdab1, type: 3}
       propertyPath: weaponName
@@ -8331,6 +8335,10 @@ PrefabInstance:
       objectReference: {fileID: 862248826}
     - target: {fileID: 1131111557757276980, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
       propertyPath: attackCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2066556156268105829, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
+      propertyPath: startLevel
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2066556156268105829, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
@@ -9856,6 +9864,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 629671443}
     m_Modifications:
+    - target: {fileID: -5456928110774554885, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
+      propertyPath: startLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -5456928110774554885, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
       propertyPath: characterClass
       value: 1
