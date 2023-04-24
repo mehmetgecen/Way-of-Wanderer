@@ -15,7 +15,7 @@ namespace RPG.Stats
         public void GainExperience(float experience)
         {
             experiencePoints += experience;
-            OnExperienceGained();
+            OnExperienceGained?.Invoke();
         }
     
         public float GetPoints()
