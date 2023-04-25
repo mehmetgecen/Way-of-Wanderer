@@ -1289,7 +1289,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406479894}
-  m_LocalRotation: {x: 0.21711645, y: 0.24891223, z: -0.05736239, w: 0.942132}
+  m_LocalRotation: {x: 0.21711648, y: 0.24891227, z: -0.057362404, w: 0.942132}
   m_LocalPosition: {x: -5.43, y: 2.63, z: -14.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10482,30 +10482,6 @@ PrefabInstance:
       propertyPath: m_margin.x
       value: 80.22523
       objectReference: {fileID: 0}
-    - target: {fileID: 3946848646282518002, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
-      propertyPath: cursorMappings.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946848646282518002, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
-      propertyPath: cursorMappings.Array.data[1].type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946848646282518002, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
-      propertyPath: cursorMappings.Array.data[2].type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946848646282518002, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
-      propertyPath: cursorMappings.Array.data[0].texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 21628736160fcc9488493401da3ef621, type: 3}
-    - target: {fileID: 3946848646282518002, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
-      propertyPath: cursorMappings.Array.data[1].texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 6fdfcd4167ed5e7488584241bb671bb2, type: 3}
-    - target: {fileID: 3946848646282518002, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
-      propertyPath: cursorMappings.Array.data[2].texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 2d18e23e3ce249b4489b8bcdd02d3f48, type: 3}
     - target: {fileID: 4917770661192813651, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
       propertyPath: weaponPrefab
       value: 
@@ -10637,6 +10613,14 @@ PrefabInstance:
     - target: {fileID: 5551582357830190675, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778628375678043483, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 128.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778628375678043483, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.9291077
       objectReference: {fileID: 0}
     - target: {fileID: 5778628375678043483, guid: e3f8606dcf88e7047a3a860c89b00d23, type: 3}
       propertyPath: m_AnchoredPosition.y

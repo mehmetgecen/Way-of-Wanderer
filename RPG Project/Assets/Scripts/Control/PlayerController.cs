@@ -6,6 +6,7 @@ using UnityEngine;
 using RPG.Movement;
 using RPG.Combat;
 using RPG.Core;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using Cursor = UnityEngine.Cursor;
 
@@ -19,7 +20,8 @@ namespace RPG.Control
         {
             None,
             Movement,
-            Combat
+            Combat,
+            UI
         }
 
         [System.Serializable]
@@ -39,13 +41,31 @@ namespace RPG.Control
 
         void Update()
         {
+            if (InteractWithUI()) return;
+            
             // Action Priority Implementation
-            if(health.IsDead()) return;
+            if (health.IsDead())
+            {
+                SetCursor(CursorType.None);
+                return;
+            }
              
             if (InteractWithCombat()) return;
             if (InteractWithMovement()) return;
 
             SetCursor(CursorType.None);
+        }
+
+        // Checking Cursor On UI or not.
+        private bool InteractWithUI()
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                SetCursor(CursorType.UI);
+                return true;
+            }
+
+            return false;
         }
 
         private bool InteractWithCombat()
