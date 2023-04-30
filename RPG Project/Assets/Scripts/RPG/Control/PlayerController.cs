@@ -50,7 +50,7 @@ namespace RPG.Control
 
         private bool InteractWithComponent()
         {
-            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            RaycastHit[] hits = SortAllRaycast();
 
             foreach (RaycastHit hit in hits )
             {
@@ -69,6 +69,22 @@ namespace RPG.Control
             return false;
         }
 
+        RaycastHit[] SortAllRaycast()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            float[] distances = new float[hits.Length];
+            
+            for (int i = 0; i < hits.Length; i++)
+            {
+                distances[i] = hits[i].distance;
+            }
+            
+            Array.Sort(distances,hits);
+
+            return hits;
+
+        }
+
         // Checking Cursor On UI or not.
         private bool InteractWithUI()
         {
@@ -81,33 +97,6 @@ namespace RPG.Control
             return false;
         }
 
-        /*private bool InteractWithCombat()
-        {
-            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-
-            foreach (RaycastHit hit in hits)
-            {
-                CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                
-                if (target== null) continue;
-
-                if (!GetComponent<Fighter>().CanAttack(target.gameObject))
-                {
-                    continue;
-                }
-
-                if (Input.GetMouseButton(0))
-                {
-                    GetComponent<Fighter>().Attack(target.gameObject);
-                }
-                
-                SetCursor(CursorType.Combat);
-
-                return true;
-            }
-
-            return false;    
-        }*/
         
         private bool InteractWithMovement()
         {
@@ -154,6 +143,34 @@ namespace RPG.Control
         {
             return Camera.main.ScreenPointToRay(Input.mousePosition);
         }
+        
+        /*private bool InteractWithCombat()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+
+            foreach (RaycastHit hit in hits)
+            {
+                CombatTarget target = hit.transform.GetComponent<CombatTarget>();
+                
+                if (target== null) continue;
+
+                if (!GetComponent<Fighter>().CanAttack(target.gameObject))
+                {
+                    continue;
+                }
+
+                if (Input.GetMouseButton(0))
+                {
+                    GetComponent<Fighter>().Attack(target.gameObject);
+                }
+                
+                SetCursor(CursorType.Combat);
+
+                return true;
+            }
+
+            return false;    
+        }*/
         
         
     }
