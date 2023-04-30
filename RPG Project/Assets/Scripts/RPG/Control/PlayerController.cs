@@ -69,6 +69,9 @@ namespace RPG.Control
             return false;
         }
 
+        
+        // Raycast Sorting by Distance
+        // Foremost Element Prioritized
         RaycastHit[] SortAllRaycast()
         {
             RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
