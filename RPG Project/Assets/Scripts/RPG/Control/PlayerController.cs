@@ -6,6 +6,7 @@ using UnityEngine;
 using RPG.Movement;
 using RPG.Combat;
 using RPG.Core;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using Cursor = UnityEngine.Cursor;
@@ -25,7 +26,7 @@ namespace RPG.Control
         }
 
         [SerializeField] private CursorMapping[] cursorMappings = null;
-        
+        [SerializeField] private float maxNavMeshprojectionDistance = 1f;
         private void Awake()
         {
             health = GetComponent<Health>();
@@ -103,23 +104,47 @@ namespace RPG.Control
         
         private bool InteractWithMovement()
         {
-            Ray ray = GetMouseRay();
-            RaycastHit hit;
+            Vector3 target;
 
-            bool hasHit = Physics.Raycast(ray, out hit);
+            bool hasHit = RaycastNavMesh(out target);
 
             if (hasHit)
             {
                 if (Input.GetMouseButton(0))
                 {
-                    GetComponent<Mover>().StartMoveAction(hit.point);
+                    GetComponent<Mover>().StartMoveAction(target);
                 }
                 SetCursor(CursorType.Movement);
                 return true;
             }
             return false;
 
-            //Debug.DrawRay(ray.origin,ray.direction * 100); 
+            //Debug.DrawRay(ray.origin,ray.direction * 100);
+            
+            //hit.point
+        }
+
+        private bool RaycastNavMesh(out Vector3 target)
+        {
+            target = new Vector3();
+            
+            RaycastHit hit;
+            Ray ray = GetMouseRay();
+            
+            bool hasHit = Physics.Raycast(ray, out hit);
+
+            if (!hasHit) return false;
+
+            NavMeshHit navMeshHit;
+            bool hasCastToNavMesh = NavMesh.SamplePosition(hit.point, out navMeshHit, maxNavMeshprojectionDistance,
+                NavMesh.AllAreas);
+
+            if (!hasCastToNavMesh) return false;
+
+            target = navMeshHit.position;
+                
+            return true;
+
         }
 
         public void SetCursor(CursorType type)
