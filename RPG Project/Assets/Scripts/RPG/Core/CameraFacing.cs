@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class CameraFacing : MonoBehaviour
+namespace RPG.Core
 {
-    private TextMeshProUGUI healthText;
-
-    private void LateUpdate()
+    public class CameraFacing : MonoBehaviour
     {
-        var rotation = Camera.main.transform.rotation;
-        transform.LookAt(transform.position + rotation * Vector3.forward,rotation * Vector3.up);
-    }
+        private void Update()
+        {
+            transform.forward = Camera.main.transform.forward;
+
+            // var rotation = Camera.main.transform.rotation;
+            // transform.LookAt(transform.position + rotation * Vector3.forward,rotation * Vector3.up);
+        }
+    } 
 }
+

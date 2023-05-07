@@ -165,6 +165,13 @@ namespace RPG.Combat
             }
         }
 
+        public float GetDamage()
+        {
+            var statDamage = GetComponent<BaseStats>().GetStat(Stat.Damage);
+
+            return statDamage;
+        }
+
         public object CaptureState()
         {
             return _currentWeapon.name;
