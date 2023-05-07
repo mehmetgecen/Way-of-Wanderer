@@ -159,6 +159,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5d105e377592e4294779faab662af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageTaken:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7155576045704947059}
+        m_TargetAssemblyTypeName: RPG.UI.DamageTextSpawner, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 13
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-342304420457082086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DamageTextSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8264202237020202889, guid: 4c809895c4cc1b24bae9a7c704065fda, type: 3}
+      propertyPath: damageTextPrefab
+      value: 
+      objectReference: {fileID: 6364029095274984236, guid: fab2f2272fa4ed14ab851d3fba7a48b7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c809895c4cc1b24bae9a7c704065fda, type: 3}
 --- !u!4 &458109882669764418 stripped
@@ -251,3 +270,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1704161816339991992, guid: 4c809895c4cc1b24bae9a7c704065fda, type: 3}
   m_PrefabInstance: {fileID: 1296454665794896634}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7155576045704947059 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8264202237020202889, guid: 4c809895c4cc1b24bae9a7c704065fda, type: 3}
+  m_PrefabInstance: {fileID: 1296454665794896634}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b5cfa7b96e2c54d8cd6ebcc2715a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

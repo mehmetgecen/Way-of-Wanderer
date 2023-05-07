@@ -6,17 +6,21 @@ using RPG.Saving;
 using RPG.Core;
 using RPG.Stats;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RPG.Attributes
 {
     public class Health : MonoBehaviour,ISaveable
     {
+        [SerializeField] private UnityEvent damageTaken;
+        
         private GameObject _instigator = null;
         private bool _isDead = false;
         
         float health = -1f;
         float startHealth;
         float regenerationPercentage = 70;
+        
         
          private void Start()
          {
@@ -39,8 +43,8 @@ namespace RPG.Attributes
          }
 
          public void TakeDamage(GameObject instigator,float damage)
-        {
-            print(gameObject.name + " took damage: " + damage);
+         {
+             print(gameObject.name + " took damage: " + damage);
             
             health = Mathf.Max(health - damage, 0);
             
@@ -48,6 +52,11 @@ namespace RPG.Attributes
             {
                 Die();
                 AwardExperience(instigator);
+            }
+
+            else
+            {
+                damageTaken.Invoke();
             }
         }
 

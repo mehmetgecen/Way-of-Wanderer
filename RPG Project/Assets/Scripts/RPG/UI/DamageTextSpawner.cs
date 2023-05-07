@@ -1,3 +1,6 @@
+using System;
+using RPG.Attributes;
+using RPG.Combat;
 using UnityEngine;
 
 namespace RPG.UI
@@ -5,14 +8,10 @@ namespace RPG.UI
     public class DamageTextSpawner : MonoBehaviour
     {
         [SerializeField] private DamageText damageTextPrefab = null;
-        void Start()
+        
+        public void Spawn(float damageAmount)
         {
-            Spawn(30);
-        }
-
-        private void Spawn(float damage)
-        {
-            DamageText instance = Instantiate<DamageText>(damageTextPrefab,transform);
+            DamageText instance = Instantiate<DamageText>(damageTextPrefab, transform);
         }
     
     }
