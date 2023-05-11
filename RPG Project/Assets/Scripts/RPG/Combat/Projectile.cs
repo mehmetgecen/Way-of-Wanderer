@@ -14,7 +14,7 @@ namespace RPG.Combat
         [SerializeField] private float projectileSpeed;
         [SerializeField] private bool isHoming;
         [SerializeField] private GameObject hitEffect = null;
-        [SerializeField] private float maxLifetime = 10f;
+        [SerializeField] private float maxLifetime = 5f;
             
         
         float _projectileDamage;
@@ -58,16 +58,15 @@ namespace RPG.Combat
     
         private void OnTriggerEnter(Collider other)
         {
-            print("Arrow");
-            
             if (other.GetComponent<Health>() != _target) return;
             if(_target.IsDead()) return;
             
             _target.TakeDamage(instigator,_projectileDamage);
-            
             projectileSpeed = 0;
+            
             onProjectileHit.Invoke();
-            Destroy(gameObject);
+            
+            Destroy(gameObject,.25f);
             
             if (gameObject.name.Contains("Fireball")) // will be edited for performance issues
             {
