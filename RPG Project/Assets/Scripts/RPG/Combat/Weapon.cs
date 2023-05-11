@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using RPG.Core;
 using RPG.Attributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RPG.Combat
 {
@@ -86,6 +87,7 @@ namespace RPG.Combat
             {
                 Projectile projectileInstance = Instantiate(projectile,GetTransform(rightHand,leftHand).position,Quaternion.identity);
                 projectileInstance.SetTarget(target,instigator,calculatedDamage);
+                
             }
             
         }

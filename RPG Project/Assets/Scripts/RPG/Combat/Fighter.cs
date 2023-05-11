@@ -7,6 +7,7 @@ using RPG.Movement;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
+using UnityEngine.Events;
 
 namespace RPG.Combat
 {
@@ -116,6 +117,7 @@ namespace RPG.Combat
             if (_currentWeapon.HasProjectile())
             {
                 _currentWeapon.LaunchProjectile(rightHandTransform,leftHandTransform,_target,gameObject,statDamage);
+                
             }
             else
             {

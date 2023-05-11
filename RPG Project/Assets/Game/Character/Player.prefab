@@ -19,6 +19,14 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 458109882669764418, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 474724268883015910, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e7a068fc894ced2438c719feae89ea40, type: 3}
     - target: {fileID: 1404130102170956430, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
       propertyPath: health
       value: 200
@@ -55,6 +63,10 @@ PrefabInstance:
       propertyPath: rightHandTransform
       value: 
       objectReference: {fileID: 7781656775346490246}
+    - target: {fileID: 3169011824296663647, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3755884099987530824, guid: fa4e7fa4140784e4192ca41144f0a0f5, type: 3}
       propertyPath: m_RootOrder
       value: 1
