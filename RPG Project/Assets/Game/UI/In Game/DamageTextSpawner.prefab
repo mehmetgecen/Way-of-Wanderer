@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b5cfa7b96e2c54d8cd6ebcc2715a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTextPrefab: {fileID: 6364029095274984236, guid: fab2f2272fa4ed14ab851d3fba7a48b7, type: 3}
+  damageTextPrefab: {fileID: 2093070713644544542, guid: 21a3e616b37b2044aad77026b847b86e, type: 3}
