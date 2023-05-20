@@ -13,7 +13,9 @@ namespace RPG.Control
     public class AIController : MonoBehaviour
     {
         [SerializeField] private float chaseDistance = 5f;
-        [SerializeField] private float suspicionDuration = 5f;
+        [SerializeField] private float shoutDistance= 5f;
+        [SerializeField] private float suspicionDuration = 3f;
+        [SerializeField] private float aggroCooldownTime = 3f;
         [SerializeField] private float waypointDwellTime = 2f;
         [SerializeField] private float waypointTolerance = 1f;
         [SerializeField] private float patrolMovementSpeed = 2f;
@@ -29,7 +31,7 @@ namespace RPG.Control
         
         private float _timeSinceLastSawPlayer = Mathf.Infinity;
         private float _timeSinceArrivedAtWaypoint = Mathf.Infinity;
-        
+        private float _timeSinceAggrevated = Mathf.Infinity;
         
         private int _currentWaypointIndex = 0;
 
@@ -51,7 +53,7 @@ namespace RPG.Control
         {
             if(_health.IsDead()) return;
             
-            if (IsInAttackRange() && _fighter.CanAttack(_player))
+            if (IsAggrevated() && _fighter.CanAttack(_player))
             {
                 AttackBehaviour();
             }
@@ -82,6 +84,7 @@ namespace RPG.Control
         {
             _timeSinceLastSawPlayer += Time.deltaTime;
             _timeSinceArrivedAtWaypoint += Time.deltaTime;
+            _timeSinceAggrevated += Time.deltaTime;
         }
 
         private void PatrolBehaviour()
@@ -141,20 +144,38 @@ namespace RPG.Control
             GetComponent<NavMeshAgent>().speed = attackMovementSpeed;
             _timeSinceLastSawPlayer = 0;
             _fighter.Attack(_player);
-            
+
+            AggrevateEnemyGroup();
+
         }
 
-        private bool IsInAttackRange()
+        private void AggrevateEnemyGroup()
         {
-            if (_health.IsDamageTaken())
-            {
-                return true;
-            }
-            
-            var distanceToPlayer = Vector3.Distance(gameObject.transform.position, _player.transform.position);
-            return distanceToPlayer < chaseDistance;
-            
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, shoutDistance, Vector3.up, 0);
 
+            foreach (RaycastHit hit in hits)
+            {
+                AIController aiController = hit.collider.GetComponent<AIController>();
+                
+                if(aiController == null||aiController == this) continue;
+                
+                aiController.Aggrevate();
+                
+            }
+        }
+
+        public void Aggrevate()
+        {
+            if (!(_timeSinceAggrevated < aggroCooldownTime))
+            {
+                _timeSinceAggrevated = 0;
+            }
+        }
+
+        private bool IsAggrevated()
+        {
+            var distanceToPlayer = Vector3.Distance(gameObject.transform.position, _player.transform.position);
+            return distanceToPlayer < chaseDistance || _timeSinceAggrevated < aggroCooldownTime;
         }
 
         // Called from Unity
