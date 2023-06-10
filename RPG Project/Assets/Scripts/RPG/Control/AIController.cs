@@ -15,7 +15,7 @@ namespace RPG.Control
         [SerializeField] private float chaseDistance = 5f;
         [SerializeField] private float shoutDistance= 5f;
         [SerializeField] private float suspicionDuration = 3f;
-        [SerializeField] private float aggroCooldownTime = 3f;
+        [SerializeField] private float aggroCooldownTime = 5f;
         [SerializeField] private float waypointDwellTime = 2f;
         [SerializeField] private float waypointTolerance = 1f;
         [SerializeField] private float patrolMovementSpeed = 2f;
@@ -157,7 +157,7 @@ namespace RPG.Control
             {
                 AIController aiController = hit.collider.GetComponent<AIController>();
                 
-                if(aiController == null||aiController == this) continue;
+                if(aiController == null || aiController == this) continue;
                 
                 aiController.Aggrevate();
                 
