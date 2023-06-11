@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -1413381754890572566, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
       propertyPath: chaseDistance
-      value: 15
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1131111557757276980, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
       propertyPath: defaultWeapon
