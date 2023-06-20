@@ -236,6 +236,10 @@ PrefabInstance:
       propertyPath: health
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 4293199044758768656, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
+      propertyPath: damageTaken.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4823366980432240919, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
       propertyPath: m_Name
       value: Door Guard 2 (1)
@@ -3042,6 +3046,10 @@ PrefabInstance:
     - target: {fileID: 4293199044758768656, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
       propertyPath: health
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293199044758768656, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
+      propertyPath: damageTaken.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4823366980432240919, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
       propertyPath: m_Name
@@ -8673,7 +8681,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406479894}
-  m_LocalRotation: {x: 0.11308476, y: 0.7389179, z: -0.12820973, w: 0.65174735}
+  m_LocalRotation: {x: 0.11308477, y: 0.7389178, z: -0.12820974, w: 0.6517473}
   m_LocalPosition: {x: -7.9, y: 1.51, z: -6.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9561,6 +9569,10 @@ PrefabInstance:
     - target: {fileID: 4293199044758768656, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
       propertyPath: health
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293199044758768656, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
+      propertyPath: damageTaken.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4823366980432240919, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
       propertyPath: m_Name
@@ -26229,6 +26241,10 @@ PrefabInstance:
       propertyPath: defaultWeapon
       value: 
       objectReference: {fileID: 11400000, guid: bfd6ea2804dbacc48810483e45cf0b55, type: 2}
+    - target: {fileID: 7951073407176400131, guid: 83365b938d7b1974986c104632efdab1, type: 3}
+      propertyPath: damageTaken.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83365b938d7b1974986c104632efdab1, type: 3}
 --- !u!1001 &1342908326
@@ -32839,6 +32855,10 @@ PrefabInstance:
       propertyPath: health
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 4293199044758768656, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
+      propertyPath: damageTaken.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4823366980432240919, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
       propertyPath: m_Name
       value: Door Guard 1 (1)
@@ -36506,6 +36526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 0}
+  maxPathLength: 40
 --- !u!114 &1941895137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38100,6 +38121,10 @@ PrefabInstance:
     - target: {fileID: 6517237610797023783, guid: 83365b938d7b1974986c104632efdab1, type: 3}
       propertyPath: weaponName
       value: Fire Bow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951073407176400131, guid: 83365b938d7b1974986c104632efdab1, type: 3}
+      propertyPath: damageTaken.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83365b938d7b1974986c104632efdab1, type: 3}
@@ -39821,6 +39846,10 @@ PrefabInstance:
       propertyPath: health
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 4293199044758768656, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
+      propertyPath: damageTaken.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4823366980432240919, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
       propertyPath: m_Name
       value: Door Guard 1
@@ -41276,6 +41305,10 @@ PrefabInstance:
     - target: {fileID: 4293199044758768656, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
       propertyPath: health
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293199044758768656, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
+      propertyPath: damageTaken.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4823366980432240919, guid: 82533648a5b358f499175a7f374d3cdb, type: 3}
       propertyPath: m_Name
