@@ -13,9 +13,12 @@ namespace RPG.Movement
     public class Mover : MonoBehaviour,IAction,ISaveable
     {
         [SerializeField] private Transform targetTransform;
+        [SerializeField] private float maxPathLength = 40f;
         private NavMeshAgent _playerNavMesh;
         private Animator _characterAnimator;
         private Health _health;
+        
+        
 
         private void Awake()
         {
@@ -44,6 +47,18 @@ namespace RPG.Movement
             MoveTo(destination);
         }
 
+        public bool CanMoveTo(Vector3 destination)
+        {
+            NavMeshPath path = new NavMeshPath();
+            bool hasPath = NavMesh.CalculatePath(transform.position, destination, NavMesh.AllAreas, path);
+
+            if (!hasPath) return false;
+            if (path.status != NavMeshPathStatus.PathComplete) return false;
+            if (GetPathLength(path) > maxPathLength) return false;
+
+            return true;
+        }
+        
         // General Movement Method
         // NavMesh Motion Switches
         public void MoveTo(Vector3 destination)
@@ -68,10 +83,25 @@ namespace RPG.Movement
 
             _characterAnimator.SetFloat("ForwardSpeed", speed);
 
-
         }
+        
+        private float GetPathLength(NavMeshPath path)
+        {
+            float total = 0;
 
+            if (path.corners.Length < 2)
+            {
+                return total;
+            }
 
+            for (int i = 0; i < path.corners.Length-1; i++)
+            {
+                total += Vector3.Distance(path.corners[i], path.corners[i + 1]);
+            }
+
+            return total;
+        }
+        
         public object CaptureState()
         {
             return new SerializableVector3(transform.position);

@@ -91,10 +91,8 @@ namespace RPG.Combat
         // CombatTarget types converted to GameObject.
         public bool CanAttack(GameObject combatTarget)
         {
-            if (combatTarget == null)
-            {
-                return false;
-            }
+            if (combatTarget == null) return false;
+            if (!GetComponent<Mover>().CanMoveTo(combatTarget.transform.position)) return false;
             Health combatTargetHealth = combatTarget.GetComponent<Health>();
             
             return combatTargetHealth != null && !combatTargetHealth.IsDead();
