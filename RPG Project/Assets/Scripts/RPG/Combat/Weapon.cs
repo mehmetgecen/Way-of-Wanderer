@@ -8,7 +8,7 @@ using UnityEngine.Events;
 namespace RPG.Combat
 {
     [CreateAssetMenu(fileName = "Weapon",menuName = "Weapons/Make New Weapon",order = 0)]
-    public class Weapon : ScriptableObject
+    public class Weapon: ScriptableObject
     {
         [SerializeField] private float weaponRange = 2f;
         [SerializeField] private float weaponDamage = 20f;

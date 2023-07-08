@@ -61,6 +61,11 @@ namespace RPG.Attributes
                 damageTaken.Invoke(damage);
             }
         }
+         
+         public void Heal(float healthToRestore)
+         {
+             health = Mathf.Min(health + healthToRestore, GetMaxHealthPoints());
+         }
 
         private void Die()
         {
@@ -129,6 +134,8 @@ namespace RPG.Attributes
                 Die();
             }
         }
+
+        
     }  
 }
 
