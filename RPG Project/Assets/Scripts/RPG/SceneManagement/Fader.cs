@@ -11,6 +11,7 @@ namespace RPG.SceneManagement
         // TODO will be edited soon.
         
         private CanvasGroup canvasGroup;
+        private Coroutine activeFadeRoutine = null;
         
         private void Start()
         {
@@ -23,24 +24,44 @@ namespace RPG.SceneManagement
             yield return FadeIn(1f);
         }
         
-        public IEnumerator FadeOut(float time)
+        public void FadeOutInstantly()
         {
-            while (canvasGroup.alpha < 1)
+            canvasGroup.alpha = 1;
+        }
+        
+        public IEnumerator Fade(float target,float time)
+        {
+            if (activeFadeRoutine != null)
             {
-                canvasGroup.alpha += Time.deltaTime / time ;
-                yield return null;
+                StopCoroutine(activeFadeRoutine);
             }
             
+            activeFadeRoutine = StartCoroutine(FadeRoutine(target,time));
+            yield return activeFadeRoutine;
+
+        }
+
+        IEnumerator FadeRoutine(float target,float time)
+        {
+            while (!Mathf.Approximately(canvasGroup.alpha,target))
+            {
+                Mathf.MoveTowards(canvasGroup.alpha, target, Time.deltaTime / time);
+                yield return null;
+            }
         }
 
         public IEnumerator FadeIn(float time)
         {
-            while (canvasGroup.alpha > 0)
-            {
-                canvasGroup.alpha -= Time.deltaTime / time ;
-                yield return null;
-            }
+            return Fade(0, time);
         }
+
+        public IEnumerator FadeOut(float time)
+        {
+            return Fade(1, time);
+        }
+
+       
+
         
     }    
 }

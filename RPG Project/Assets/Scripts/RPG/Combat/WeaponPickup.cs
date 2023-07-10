@@ -12,6 +12,7 @@ namespace RPG.Combat
         [SerializeField] private Weapon weapon = null;
         [SerializeField] private float spawnTime = 5;
         [SerializeField] private float healthToRestore = 0;
+        [SerializeField] private GameObject healParticle;
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Player"))
@@ -31,6 +32,8 @@ namespace RPG.Combat
             if (healthToRestore > 0)
             {
                 subject.GetComponent<Health>().Heal(healthToRestore);
+                Instantiate(healParticle, subject.transform);
+
             }
             
             

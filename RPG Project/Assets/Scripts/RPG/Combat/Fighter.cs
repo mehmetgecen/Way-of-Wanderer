@@ -11,7 +11,7 @@ using UnityEngine.Events;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour,IAction,ISaveable,IModifierProvider
+    public class Fighter : MonoBehaviour,IAction,IModifierProvider
     {
         [SerializeField] private float attackCooldown = 2f;
         [SerializeField] private Weapon defaultWeapon = null;
@@ -172,6 +172,7 @@ namespace RPG.Combat
             return statDamage;
         }
 
+        /*
         public object CaptureState()
         {
             return _currentWeapon.name;
@@ -182,7 +183,7 @@ namespace RPG.Combat
             string weaponName = (string)state;
             Weapon weapon = Resources.Load<Weapon>(weaponName);
             EquipWeapon(weapon);
-        }
+        }*/
 
        
     }
